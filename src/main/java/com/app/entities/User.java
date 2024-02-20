@@ -1,10 +1,15 @@
 package com.app.entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Getter;
@@ -26,7 +31,11 @@ public class User extends BaseEntity {
 	private String password;
 	@Column(name = "phone_no")
 	private String phoneNo;
-	@Column(name = "role")
-	private String role;
+
+	@Enumerated(EnumType.STRING)
+	private Role role;
+	
+	@OneToMany(mappedBy = "user")
+	private  List<Bookings> bookings;
 
 }
