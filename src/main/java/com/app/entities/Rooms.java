@@ -2,6 +2,7 @@ package com.app.entities;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -11,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -30,9 +33,9 @@ public class Rooms extends BaseEntity {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "hotel_id")
 	private Hotels hotels;
-	
-	@OneToMany(mappedBy = "rooms")
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "rooms", cascade = CascadeType.ALL)
 	private List<Bookings> bookings;
-	
 
 }

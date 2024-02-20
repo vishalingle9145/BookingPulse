@@ -38,6 +38,21 @@ public class HotelsController {
     public List<Hotels> getHotelsByRating(@PathVariable int rating) {
         return hotelsService.getHotelsByRating(rating);
     }
+    
+    @PostMapping
+    public Hotels createHotel(@RequestBody Hotels hotel) {
+        return hotelsService.createHotel(hotel);
+    }
+
+    @PutMapping("/{hotelId}")
+    public Hotels updateHotel(@PathVariable Long hotelId, @RequestBody Hotels hotel) {
+        return hotelsService.updateHotel(hotelId, hotel);
+    }
+
+    @DeleteMapping("/{hotelId}")
+    public void deleteHotel(@PathVariable Long hotelId) {
+    	hotelsService.deleteHotel(hotelId);
+    }
 
 //    @GetMapping("/available-rooms")
 //    public List<Hotels> getHotelsWithAvailableRooms() {

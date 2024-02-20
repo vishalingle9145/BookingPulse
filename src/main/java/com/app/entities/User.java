@@ -2,15 +2,19 @@ package com.app.entities;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -35,7 +39,8 @@ public class User extends BaseEntity {
 	@Enumerated(EnumType.STRING)
 	private Role role;
 	
-	@OneToMany(mappedBy = "user")
+	@JsonIgnore
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private  List<Bookings> bookings;
 
 }

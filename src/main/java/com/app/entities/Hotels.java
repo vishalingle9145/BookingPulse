@@ -2,10 +2,14 @@ package com.app.entities;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -24,12 +28,12 @@ public class Hotels extends BaseEntity {
 	private String phoneNo;
 	private int rating;
 
-	@OneToMany(mappedBy = "hotels")
+	@JsonIgnore
+	@OneToMany(mappedBy = "hotels", cascade = CascadeType.ALL)
 	private List<Rooms> rooms;
 
-	@OneToMany(mappedBy = "hotels")
+	@JsonIgnore
+	@OneToMany(mappedBy = "hotels", cascade = CascadeType.ALL)
 	private List<Bookings> bookings;
-	
-	
-	
+
 }
