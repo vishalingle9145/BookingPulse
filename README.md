@@ -1,1 +1,3 @@
 # BookingPulse
+
+Developed a comprehensive hotel booking application to streamline the process of hotel reservations for users where hotel owner can add their hotel details like rooms, services and their prices. Customers can visit website and they can see list of hotels available in the location which they are looking for and they will also be able to see the reviews and ratings of individual hotels and they will be able to book rooms for certain range of dates.
